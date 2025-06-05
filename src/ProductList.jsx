@@ -254,10 +254,18 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     const handleAddToCart = (product) => {
         dispatch(addItem(product)); // Dispatch the action to add the product to the cart (Redux action)
+        const calculateTotalQuantity = () => {
+            return CartItem ? CartItem.reduce((total, item) => total + item.quantity, 0) : 0;
+        };
+    const handleRemove = () => {
+        dispatch(removeItem(item.name)); // Dispatch the action to remove the item from the cart
+    };
 
         setAddedToCart((prevState) => ({ // Update the local state to reflect that the product has been added
             ...prevState, // Spread the previous state to retain existing entries
             [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
+
+    
         }));
     };
     };
